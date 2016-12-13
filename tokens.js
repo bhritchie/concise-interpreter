@@ -20,9 +20,8 @@ const tokens = new Map(Object.entries({
 
     '<': {token: 'LESS_THAN'},
     '>': {token: 'GREATER_THAN'},
-
-    '<=': {token: 'LESS_THAN_OR_EQUALS'},
-    '>=': {token: 'GREATER_THAN_OR_EQUALS'},
+    '≤': {token: 'LESS_THAN_OR_EQUALS'},
+    '≥': {token: 'GREATER_THAN_OR_EQUALS'},
 
     '~': {token: 'NOT'},
     '&': {token: 'AND'},
