@@ -14,7 +14,7 @@ const read = (input = '', collector = []) => {
     input = input.replace(/^\s*/, '');
 
     if (!input) {
-        return [...collector, tokens.EOF];
+        return [...collector, tokens.eof];
 
     } else if (['(', ')', '{', '}', ',', ';', '+', '-'].includes(input[0])) {
         return read(input.substring(1), [...collector, tokens[input[0]]]);
@@ -35,7 +35,7 @@ const read = (input = '', collector = []) => {
         return read(input.substring(number.length), [...collector, token]);
 
     } else {
-        const token = Object.assign({}, tokens.ILLEGAL, {value: input[0]});
+        const token = Object.assign({}, tokens.illegal, {value: input[0]});
         return read(input.substring(1), [...collector, token])
     }
 };

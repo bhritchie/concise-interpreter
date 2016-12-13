@@ -1,77 +1,76 @@
-// const tokens = {
-//     ILLEGAL: 'ILLEGAL',
-//     EOF: 'EOF',
-//     IDENT: 'IDENT',
-//     INTEGER: 'INTEGER',
-//     ASSIGN: '=',
-//     PLUS: '+',
-//     COMMA: ',',
-//     SEMICOLON: ';',
-//     MINUS: '-',
-//     BANG: '!',
-//     SLASH: '/',
-//     ASTERISK: '*',
-//     LT: '<',
-//     GT: '>',
-//     LPAREN: '(',
-//     RPAREN: ')',
-//     LBRACE: '{',
-//     RBRACE: '}',
-//     FUNCTION: 'FUNCTION',
-//     LET: 'LET',
-//     TRUE: 'TRUE',
-//     FALSE: 'FALSE',
-//     IF: 'IF',
-//     ELSE: 'ELSE',
-//     RETURN: 'RETURN',
-//     EQ: '==',
-//     NOTEQ: '!=',
-// };
-
-
 const tokens = {
     '(': {token: 'LPAREN'},
     ')': {token: 'RPAREN'},
     '{': {token: 'LBRACE'},
     '}': {token: 'RBRACE'},
+
     ',': {token: 'COMMA'},
     ';': {token: 'SEMICOLON'},
+
     '+': {token: 'PLUS'},
     '-': {token: 'MINUS'},
+    '*': {token: 'MULTIPLY'},
+    '/': {token: 'DIVIDE'},
+
+    '=': {token: 'EQUALS'},
+    '≠': {token: 'NOT_EQUALS'},
+
+    'is': {token: 'EQUALS'},
+    'isnt': {token: 'NOT_EQUALS'},
+
+    '<': {token: 'LESS_THAN'},
+    '>': {token: 'GREATER_THAN'},
+
+    '<=': {token: 'LESS_THAN_OR_EQUALS'},
+    '>=': {token: 'GREATER_THAN_OR_EQUALS'},
+
+    '~': {token: 'NOT'},
+    '&': {token: 'AND'},
+    '|': {token: 'OR'},
+
+    'not': {token: 'NOT'},
+    'and': {token: 'AND'},
+    'or': {token: 'OR'},
+
+    'let': {token: 'LET'},
+    'be': {token: 'ASSIGN'},
 
     'fn': {token: 'FUNCTION'},
-    'let': {token: 'LET'},
+
     'true': {token: 'TRUE'},
     'false': {token: 'FALSE'},
+
     'if': {token: 'IF'},
     'else': {token: 'ELSE'},
+
     'return': {token: 'RETURN'},
 
     'number': {token: 'NUMBER'},
     'identifier': {token: 'IDENTIFIER'},
 
-    EOF: {token: 'EOF'},
-    ILLEGAL: {token: 'ILLEGAL'}
+    'eof': {token: 'EOF'},
+    'illegal': {token: 'ILLEGAL'}
 };
 
 const keywords = [
-    'fn',
     'let',
+    'be',
+
+    'fn',
+
     'true',
     'false',
+
+    'is',
+    'isnt',
+
+    'not',
+    'and',
+    'or',
+
     'if',
     'else',
     'return',
 ];
-
-// const keywords = {
-//     'fn': tokens.FUNCTION,
-//     'let': tokens.LET,
-//     'true': tokens.TRUE,
-//     'false': tokens.FALSE,
-//     'if': tokens.IF,
-//     'else': tokens.ELSE,
-//     'return': tokens.RETURN,
-// };
 
 module.exports = {tokens, keywords};
