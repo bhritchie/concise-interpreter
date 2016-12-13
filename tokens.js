@@ -1,4 +1,4 @@
-const tokens = {
+const tokens = new Map(Object.entries({
     '(': {token: 'LPAREN'},
     ')': {token: 'RPAREN'},
     '{': {token: 'LBRACE'},
@@ -50,7 +50,7 @@ const tokens = {
 
     'eof': {token: 'EOF'},
     'illegal': {token: 'ILLEGAL'}
-};
+}));
 
 const keywords = [
     'let',
