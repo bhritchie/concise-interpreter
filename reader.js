@@ -10,52 +10,36 @@ const input = `
     ;(,) hey111yeah!! {+ ;  99 let }; hey ; what? +- _ = 123 return 1
 `;
 
-const reader = (input = '') => {
+const read = (input = '', collector = []) => {
+    input = input.replace(/^\s*/, '');
 
-    const collector = [];
+    if (!input) {
+        return [...collector, tokens.EOF];
 
-    (function read (string) {
+    } else if (['(', ')', '{', '}', ',', ';', '+', '-'].includes(input[0])) {
+        return read(input.substring(1), [...collector, tokens[input[0]]]);
 
-        // use concat along the way so don't need to keep the collector separate
-
-        if (!string) {
-            collector.push(tokens.EOF);
-            return;
+    } else if (input.match(VALID_IDENTIFIER_START)) {
+        const identifier = input.match(VALID_IDENTIFIER)[0];
+        let token;
+        if (keywords.includes(identifier)) {
+            token = tokens[identifier];
+        } else {
+            token = Object.assign({}, tokens.identifier, {value: identifier});
         }
+        return read(input.substring(identifier.length), [...collector, token]);
 
-        const ch = string[0];
+    } else if (input.match(VALID_NUMBER_START)) {
+        const number = input.match(VALID_NUMBER)[0];
+        const token = Object.assign({}, tokens.number, {value: +number})
+        return read(input.substring(number.length), [...collector, token]);
 
-        if (['(', ')', '{', '}', ',', ';', '+', '-'].includes(ch)) {
-            collector.push(tokens[ch]);
-            return read(string.substring(1).trim());
-        }
-
-        if (string.match(VALID_IDENTIFIER_START)) {
-            const identifier = string.match(VALID_IDENTIFIER)[0];
-
-            if (keywords.includes(identifier)) {
-                collector.push(tokens[identifier]);
-            } else {
-                collector.push(Object.assign({}, tokens.identifier, {value: identifier}));
-            }
-
-            return read(string.substring(identifier.length).trim());
-        }
-
-        if (string.match(VALID_NUMBER_START)) {
-            const number = string.match(VALID_NUMBER)[0];
-            collector.push(Object.assign({}, tokens.number, {value: +number}));
-            return read(string.substring(number.length).trim());
-        }
-
-        collector.push(Object.assign({}, tokens.ILLEGAL, {value: ch}))
-        return read(string.substring(1).trim())
-
-    })(input.trim());
-
-    return collector;
+    } else {
+        const token = Object.assign({}, tokens.ILLEGAL, {value: input[0]});
+        return read(input.substring(1), [...collector, token])
+    }
 };
 
-console.log(JSON.stringify(reader(input), null, 4));
+console.log(JSON.stringify(read(input), null, 4));
 
-module.exports = {reader};
+module.exports = {read};
