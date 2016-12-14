@@ -48,11 +48,10 @@ const keywordTokens = new Map(Object.entries({
 }));
 
 const specialTokens = new Map(Object.entries({
-    'number': {token: 'NUMBER', literal: 'number'},
-    'identifier': {token: 'IDENTIFIER', literal: 'identifier'},
+    'number': {token: 'NUMBER'},
+    'identifier': {token: 'IDENTIFIER'},
     'illegal': {token: 'ILLEGAL'},
     'eof': {token: 'EOF'},
 }));
 
-// module.exports = {characterTokens, keywordTokens, characterTokens};
 export {characterTokens, keywordTokens, specialTokens};
