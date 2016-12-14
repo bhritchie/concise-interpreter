@@ -1,0 +1,15 @@
+{
+  "name": "Simple Interpreter",
+  "version": "0.1.0",
+  "description": "A concise interpreter in JavaScript for fun and learning",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brendan Ritchie",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-latest": "^6.16.0"
+  }
+}

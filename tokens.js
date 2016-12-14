@@ -1,4 +1,4 @@
-const tokens = new Map(Object.entries({
+const characterTokens = new Map(Object.entries({
     '(': {token: 'LPAREN'},
     ')': {token: 'RPAREN'},
     '{': {token: 'LBRACE'},
@@ -26,50 +26,33 @@ const tokens = new Map(Object.entries({
     '~': {token: 'NOT'},
     '&': {token: 'AND'},
     '|': {token: 'OR'},
-
-    'not': {token: 'NOT'},
-    'and': {token: 'AND'},
-    'or': {token: 'OR'},
-
-    'let': {token: 'LET'},
-    'be': {token: 'ASSIGN'},
-
-    'fn': {token: 'FUNCTION'},
-
-    'true': {token: 'TRUE'},
-    'false': {token: 'FALSE'},
-
-    'if': {token: 'IF'},
-    'else': {token: 'ELSE'},
-
-    'return': {token: 'RETURN'},
-
-    'number': {token: 'NUMBER'},
-    'identifier': {token: 'IDENTIFIER'},
-
-    'eof': {token: 'EOF'},
-    'illegal': {token: 'ILLEGAL'}
 }));
 
-const keywords = [
-    'let',
-    'be',
+const keywordTokens = new Map(Object.entries({
+    'not': {token: 'NOT', literal: 'not'},
+    'and': {token: 'AND', literal: 'and'},
+    'or': {token: 'OR', literal: 'or'},
 
-    'fn',
+    'let': {token: 'LET', literal: 'let'},
+    'be': {token: 'ASSIGN', literal: 'be'},
 
-    'true',
-    'false',
+    'fn': {token: 'FUNCTION', literal: 'fn'},
 
-    'is',
-    'isnt',
+    'true': {token: 'TRUE', literal: 'true'},
+    'false': {token: 'FALSE', literal: 'false'},
 
-    'not',
-    'and',
-    'or',
+    'if': {token: 'IF', literal: 'if'},
+    'else': {token: 'ELSE', literal: 'else'},
 
-    'if',
-    'else',
-    'return',
-];
+    'return': {token: 'RETURN', literal: 'return'},
+}));
 
-module.exports = {tokens, keywords};
+const specialTokens = new Map(Object.entries({
+    'number': {token: 'NUMBER', literal: 'number'},
+    'identifier': {token: 'IDENTIFIER', literal: 'identifier'},
+    'illegal': {token: 'ILLEGAL'},
+    'eof': {token: 'EOF'},
+}));
+
+// module.exports = {characterTokens, keywordTokens, characterTokens};
+export {characterTokens, keywordTokens, specialTokens};
